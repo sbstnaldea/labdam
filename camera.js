@@ -1,22 +1,24 @@
-var video =  document.getElementById("video");
+var video = document.getElementById("video");
 
-function on_cam_succes(stream) {
+function onCamSuccess(stream) {
     video.srcObject = stream;
 }
-function on_cam_error(err){
-    alert("error."+err.message);
+
+function onCamError(err) {
+    alert("Error: " + err.message);
 }
 
-var constraints = {audio:false, video:true};
-navigator.mediaDevices.getUserMedia(constraints);
-.then(on_cam_succes)
-.catch(on_cam_error);
+var constraints = { audio: false, video: true };
 
-function capteaza()
-{
-    var c= document.getElementById("canvas");
+navigator.mediaDevices.getUserMedia(constraints)
+    .then(onCamSuccess)
+    .catch(onCamError);
+
+function capture() {
+    var c = document.getElementById("canvas")
     c.width = video.width;
     c.height = video.height;
+
     var ctx = c.getContext("2d");
-    ctx.drawImage(video,0,0,640,480);
+    ctx.drawImage(video, 0, 0, 640, 480);
 }
