@@ -10,7 +10,7 @@ function on_cam_error(err){
 var constraints = {audio:false, video:true};
 navigator.mediaDevices.getUserMedia(constraints);
 .then(on_cam_succes)
-.catch(on_cam_error)
+.catch(on_cam_error);
 
 function capteaza()
 {
